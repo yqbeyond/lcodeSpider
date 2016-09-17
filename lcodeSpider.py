@@ -7,6 +7,25 @@ import codecs
 import re
 import os
 
+# information
+OnlineJudges = {
+        "poj":{
+            "url": "http://poj.org",
+            "user_id": "spider", # enter your user id here
+            "passwd": "123456" # passwd here
+            },
+        "hdu":{
+            "url": "http://www.acm.hdu.edu.cn",
+            "user_id": "spider", # enter your user id here
+            "passwd": "123456" # passwd here
+            },
+        "zoj":{
+            "url": "http://acm.zoj.edu.cn",
+            "user_id": "spider", # enter your user id here
+            "passwd": "123456" # passwd here
+            }
+        }
+
 # escapses
 escapes = {}
 escapes['&lt;'] = "<"
@@ -26,33 +45,21 @@ extension_type['GCC'] = '.c'
 extension_type['Java'] = '.java'
 extension_type['C++'] = '.cpp'
 
-OnlineJudges = {
-        "hdu":{
-            "url": "http://www.acm.hdu.edu.cn",
-            "user_id": "spider",
-            "passwd": "123456"
-            },
-        "poj":{
-            "url": "http://poj.org",
-            "user_id": "spider",
-            "passwd": "123456"
-            },
-        "zoj":{
-            "url": "http://acm.zoj.edu.cn",
-            "user_id": "spider",
-            "passwd": "123456"
-            }
-        }
-
 if __name__ == '__main__':
     # POJ
+    poj_dir = "poj"
+    try:
+        os.mkdir(poj_dir)
+    except:
+        pass
+
     headers = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
             "Accept-Encoding": "gzip, deflate, sdch",
             "Accept-Language": "zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4",
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
-#            "Cookie":"JSESSIONID=0754E4E7352BD32BC5F358D532818CD9; __utmt=1; __utma=79247125.1130396759.1472913362.1473864898.1474036605.10; __utmb=79247125.94.10.1474036605; __utmc=79247125; __utmz=79247125.1473690696.6.2.utmcsr=baidu|utmccn=(organic)|utmcmd=organic",
+            "Cookie": "",
             "Host":"poj.org",
             "Pragma":"no-cache",
             "Referer": "http://poj.org/",
@@ -73,7 +80,6 @@ if __name__ == '__main__':
     response = urllib2.urlopen(request)
     
     url = OnlineJudges["poj"]["url"] + "/status?result=0&user_id=" + OnlineJudges["poj"]["user_id"]
-    url = "http://poj.org/status?result=0&user_id=" + OnlineJudges["poj"]["user_id"]
     
     request = urllib2.Request(url)
     response = urllib2.urlopen(request)
@@ -83,8 +89,7 @@ if __name__ == '__main__':
     items = tables.contents[1:]
     for item in items:
         if type(item) != BeautifulSoup.Tag:
-            items.remove(item)        
-            
+            items.remove(item)         
     
     while tables:
         last_item = items[-1]
@@ -129,7 +134,7 @@ if __name__ == '__main__':
             print 'crawling problem ' + problem_id + '...'
             # print item_request_url
             # print compiler
-            src_file_name = problem_id + extension_type[compiler]
+            src_file_name = poj_dir + "/" + problem_id + extension_type[compiler]
             if not os.path.exists(src_file_name):
                 count += 1
                 src_code_file = codecs.open(src_file_name, 'wb', 'utf-8')
