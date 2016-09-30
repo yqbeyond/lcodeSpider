@@ -13,16 +13,6 @@ OnlineJudges = {
             "url": "http://poj.org",
             "user_id": "spider", # enter your user id here
             "passwd": "123456" # passwd here
-            },
-        "hdu":{
-            "url": "http://www.acm.hdu.edu.cn",
-            "user_id": "spider", # enter your user id here
-            "passwd": "123456" # passwd here
-            },
-        "zoj":{
-            "url": "http://acm.zoj.edu.cn",
-            "user_id": "spider", # enter your user id here
-            "passwd": "123456" # passwd here
             }
         }
 
