@@ -124,7 +124,7 @@ if __name__ == '__main__':
             print 'crawling problem ' + problem_id + '...'
             # print item_request_url
             # print compiler
-            src_file_name = poj_dir + "/" + problem_id + extension_type[compiler]
+            src_file_name = poj_dir + "/poj" + problem_id + extension_type[compiler]
             if not os.path.exists(src_file_name):
                 count += 1
                 src_code_file = codecs.open(src_file_name, 'wb', 'utf-8')
