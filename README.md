@@ -1,8 +1,8 @@
 # lcodeSpider
 
-Tiny and ugly codes spiders, you can use them to crawl your accpted problems codes in some OJs
+Tiny codes spider, you can use them to crawl your accpted problems codes in some OJs
 
-## OJs now
+## OJs supported now
 
 * [HDU](http://acm.hdu.edu.cn)
 * [POJ](http://pog.org)
@@ -11,7 +11,7 @@ Tiny and ugly codes spiders, you can use them to crawl your accpted problems cod
 
 ####  POJ
 
-Enter your poj user id and password in `lpojSpider.py` correctly, and then run following code.
+Enter your poj user id and password in `lpojSpider.py` correctly, and then run following command.
 
 ```
 python lpojSpider.py
@@ -19,10 +19,8 @@ python lpojSpider.py
 
 #### HDU
 
-Enter your hdu user id and password and cookies (cause I was failed to simulate login in hdu, ^..^) in 'lhduSpider.py' correctly, and then run following code.
+Enter your hdu user id and password and cookies in 'lhduSpider.py' correctly, and then run following command.
 
 ```
 python lhudSpider.py
 ```
-
-
